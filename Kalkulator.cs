@@ -1,43 +1,61 @@
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PertemuanSatu
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.Title = "Apikasi Kalkulator";
+            Console.ForegroundColor = ConsoleColor.Green;
 
-            int a = 12;
-            int b = 8;
+            Console.WriteLine("Pilih menu calculator");
+            Console.WriteLine();
+            Console.WriteLine("1. Penambahan");
+            Console.WriteLine("2. Pengurangan");
+            Console.WriteLine("3. Perkalian");
+            Console.WriteLine("4. Pembagian");
 
-            Console.WriteLine("Hasil penambahan" + a +" + "+ b +" = "+ Penambahan(a,b));
-            Console.WriteLine("Hasil pengurangan {0} - {1} = {2}",a ,b, Pengurangan(a,b));
-            Console.WriteLine($"Hasil perkalian {a} * {b} = {Perkalian(a,b)}");
-            Console.WriteLine("Hasil pembagian {0} / {1} = {2}",a ,b, Pembagian(a,b));
 
+            Console.Write("Input Nomor Menu: ");
+            if (!int.TryParse(Console.ReadLine(), out int pilihan) || !(pilihan <=4 && pilihan >=1))
+            {
+                Console.WriteLine("Error, anda tidak memasukkan angka yang valid, ulangi");
+                return;
+            }
+            Console.Write("Inputkan Nilai A: ");
+            if (!int.TryParse(Console.ReadLine(), out int a))
+            {
+                Console.WriteLine("Error, anda tidak memasukkan angka yang valid, ulangi");
+                return;
+            }
+            Console.Write("Inputkan Nilai B: ");
+            if (!int.TryParse(Console.ReadLine(), out int b))
+            {
+                Console.WriteLine("Error, anda tidak memasukkan angka yang valid, ulangi");
+                return;
+            }
+            float hasil = pilihan switch
+            {
+                1 => a + b,
+                2 => a - b,
+                3 => a * b,
+                4 => (float)a / (float)b,
+                _ => -1,
+            };
+
+            char operasi = pilihan switch
+            {
+                1 => '+',
+                2 => '-',
+                3 => '*',
+                4 => '/',
+                _ => ' ',
+            };
+            Console.WriteLine($"Hasil dari {a} {operasi} {b} = {hasil}");
             Console.WriteLine("\n Tekan sembarang tombol untuk keluar");
             Console.ReadKey();
         }
-        static int Penambahan(int a,int b)
-        {
-            return a + b;
-        }
-        static int Pengurangan(int a, int b)
-        {
-            return a - b;
-        }
-        static int Perkalian( int a, int b)
-        {
-            return a * b;
-        }
-        static int Pembagian(int a, int b)
-        {
-            return a / b;
-        } 
     }
 }
