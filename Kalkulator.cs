@@ -3,7 +3,7 @@ using System;
 
 namespace PertemuanSatu
 {
-    internal static class Program
+    private static class Program
     {
         private static void Main(string[] args)
         {
@@ -41,7 +41,7 @@ namespace PertemuanSatu
                 1 => a + b,
                 2 => a - b,
                 3 => a * b,
-                4 => (float)a / (float)b,
+                4 => (float)a / b,
                 _ => -1,
             };
 
