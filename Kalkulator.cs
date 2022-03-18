@@ -21,6 +21,10 @@ namespace PertemuanSatu
                 Console.WriteLine("4. Pembagian");
                 Console.WriteLine();
                 Console.Write("Input Nomor Menu [1..4]: ");
+				//TryParse: mengembalikan true apabila string yang dimasukkan berupa angka integer yang valid
+				//Mengeluarkan output argument (out int pilihantemp) dengan nilai sesuai dengan string yang diinputkan
+				//Apabila string yang diinputkan tidak valid, maka output argument bernilai null dan mengembalikan nilai false
+				//More info: https://docs.microsoft.com/en-us/dotnet/api/system.int32.tryparse?view=net-6.0
                 if (!int.TryParse(Console.ReadLine(), out int pilihantemp) || !(pilihantemp <= 4 && pilihantemp >= 1))
                 {
                     DisplayError();
@@ -41,14 +45,16 @@ namespace PertemuanSatu
                 a = atemp; b = btemp; pilihan = pilihantemp;
                 break;
 
-            }          
+            }
+			//switch expression
+			//https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression
             float hasil = pilihan switch
             {
                 1 => a + b,
                 2 => a - b,
                 3 => a * b,
                 4 => (float)a / b,
-                _ => -1,
+                _ => -1, /*unreachable code*/
             };
 
             char operasi = pilihan switch
@@ -57,7 +63,7 @@ namespace PertemuanSatu
                 2 => '-',
                 3 => '*',
                 4 => '/',
-                _ => ' ',
+                _ => ' ', /*unreacheble code*/
             };
             Console.WriteLine($"Hasil dari {a} {operasi} {b} = {hasil}");
             Console.WriteLine("\n Tekan sembarang tombol untuk keluar");
