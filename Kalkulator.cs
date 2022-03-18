@@ -1,14 +1,13 @@
-
 using System;
 
 namespace PertemuanSatu
 {
-    internal static class Program
+    private static class Program
     {
         private static void Main(string[] args)
         {
             Console.Title = "Apikasi Kalkulator";
-            Console.ForegroundColor = ConsoleColor.Green;          
+            Console.ForegroundColor = ConsoleColor.Green;
             int a, b, pilihan;
 
             while (true)
@@ -21,10 +20,10 @@ namespace PertemuanSatu
                 Console.WriteLine("4. Pembagian");
                 Console.WriteLine();
                 Console.Write("Input Nomor Menu [1..4]: ");
-				//TryParse: mengembalikan true apabila string yang dimasukkan berupa angka integer yang valid
-				//Mengeluarkan output argument (out int pilihantemp) dengan nilai sesuai dengan string yang diinputkan
-				//Apabila string yang diinputkan tidak valid, maka output argument bernilai null dan mengembalikan nilai false
-				//More info: https://docs.microsoft.com/en-us/dotnet/api/system.int32.tryparse?view=net-6.0
+                //TryParse: mengembalikan true apabila string yang dimasukkan berupa angka integer yang valid
+                //Mengeluarkan output argument (out int pilihantemp) dengan nilai sesuai dengan string yang diinputkan
+                //Apabila string yang diinputkan tidak valid, maka output argument bernilai null dan mengembalikan nilai false
+                //More info: https://docs.microsoft.com/en-us/dotnet/api/system.int32.tryparse?view=net-6.0
                 if (!int.TryParse(Console.ReadLine(), out int pilihantemp) || !(pilihantemp <= 4 && pilihantemp >= 1))
                 {
                     DisplayError();
@@ -46,8 +45,8 @@ namespace PertemuanSatu
                 break;
 
             }
-			//switch expression
-			//https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression
+            //switch expression
+            //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression
             float hasil = pilihan switch
             {
                 1 => a + b,
